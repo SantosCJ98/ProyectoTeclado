@@ -12,4 +12,14 @@ public class Teclado {
 		
 	}
 	
+	public static char readChar() {
+		
+		char x = keyboard.next().charAt(0);
+		
+		keyboard.nextLine();
+		
+		return x;
+		
+	}
+	
 }
