@@ -6,13 +6,13 @@ public class Pruebas {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Introduce una cadena:");
-		
-		String x=readString();
+		boolean x=readBoolean("Eres un Chico?");
 		
 		System.out.println(x);
 		
 		closekb();
+		
+		
 
 	}
 
