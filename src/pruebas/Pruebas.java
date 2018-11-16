@@ -6,9 +6,9 @@ public class Pruebas {
 
 	public static void main(String[] args) {
 		
-		System.out.println("Introduce un caracter:");
+		System.out.println("Introduce una cadena:");
 		
-		char x=readChar();
+		String x=readString();
 		
 		System.out.println(x);
 		

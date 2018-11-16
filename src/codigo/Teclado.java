@@ -22,4 +22,12 @@ public class Teclado {
 		
 	}
 	
+	public static String readString() {
+		
+		String x = keyboard.nextLine();
+		
+		return x;
+		
+	}
+	
 }
