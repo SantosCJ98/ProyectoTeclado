@@ -5,7 +5,25 @@ import java.util.Scanner;
 
 public class Teclado {
 	
+	//enums
+	
+	public enum Equivalencias {
+		
+		MAYORIGUAL, MENORIGUAL, MAYOR, MENOR
+		
+	}
+	
+	public enum Rangos {
+		
+		AMBOSIN, AMBOSEX, MININMAXEX, MINEXMAXIN
+		
+	}
+	
+	//Clase keyboard
+	
 	static Scanner keyboard = new Scanner(System.in);
+	
+	//Función para cerrar el teclado.
 	
 	public static void closekb() {
 	
@@ -13,7 +31,7 @@ public class Teclado {
 		
 	}
 	
-	
+	//Función para leer caracter
 	
 	public static char readChar() {
 		
@@ -35,7 +53,7 @@ public class Teclado {
 	}
 	
 	
-	
+	//Función para leer cadena
 	
 	public static String readString() {
 		
@@ -44,6 +62,8 @@ public class Teclado {
 		return x;
 		
 	}
+	
+	// Función para leer booleano (Respuesta 1 o 2)
 	
 	public static boolean readBoolean (String mensaje, String mensaje2, String mensaje3) {
 		
@@ -97,6 +117,8 @@ public class Teclado {
 		
 	}
 	
+	// Función para leer booleano (Respuesta s/n || S/N)
+	
 	public static boolean readBoolean (String mensaje) {
 		
 		boolean res=false;
@@ -141,6 +163,1132 @@ public class Teclado {
 		
 	}
 	
+	// Funciones para leer números
 	
+	public static int readInt () {
+		
+		int x=0;
+		
+		try {
+		
+			x = keyboard.nextInt();
+		
+		}
+		
+		catch (InputMismatchException e) {
+			
+			System.out.println("Error: No has introducido un número entero");
+			
+		}
+		
+		return x;
+		
+		
+		
+	}
 	
+	public static int readByte () {
+		
+		byte x=0;
+		
+		try {
+		
+			x = keyboard.nextByte();
+		
+		}
+		
+		catch (InputMismatchException e) {
+			
+			System.out.println("Error: No has introducido un número Byte");
+			
+		}
+		
+		return x;
+		
+		
+		
+	}
+	
+	public static int readShort () {
+		
+		short x=0;
+		
+		try {
+		
+			x = keyboard.nextShort();
+		
+		}
+		
+		catch (InputMismatchException e) {
+			
+			System.out.println("Error: No has introducido un número Short");
+			
+		}
+		
+		return x;
+		
+		
+		
+	}
+	
+	public static double readDouble () {
+		
+		double x=0;
+		
+		try {
+		
+			x = keyboard.nextDouble();
+		
+		}
+		
+		catch (InputMismatchException e) {
+			
+			System.out.println("Error: No has introducido un número Double");
+			
+		}
+		
+		return x;
+		
+		
+		
+	}
+	
+	public static double readFloat () {
+		
+		float x=0;
+		
+		try {
+		
+			x = keyboard.nextFloat();
+		
+		}
+		
+		catch (InputMismatchException e) {
+			
+			System.out.println("Error: No has introducido un número Float");
+			
+		}
+		
+		return x;
+		
+		
+		
+	}
+	
+	public static double readLong () {
+		
+		long x=0;
+		
+		try {
+		
+			x = keyboard.nextLong();
+		
+		}
+		
+		catch (InputMismatchException e) {
+			
+			System.out.println("Error: No has introducido un número Long");
+			
+		}
+		
+		return x;
+		
+		
+		
+	}
+	
+	// Funciones para leer numeros con equivalencias
+	
+	public static int readEqui (int x, Equivalencias equi) {
+		
+		int num = 0;
+		
+		try {
+		
+		switch (equi) {
+		
+		case MAYORIGUAL:
+			
+			do {
+			
+			num = keyboard.nextInt();
+			
+			keyboard.nextLine();
+			
+			} while (num < x);
+			
+			break;
+			
+		case MENORIGUAL:
+			
+			do {
+			
+			num = keyboard.nextInt();
+			
+			keyboard.nextLine();
+			
+			} while (num > x);
+			
+			break;
+			
+		case MAYOR:
+			
+			do {
+			
+			num = keyboard.nextInt();
+			
+			keyboard.nextLine();
+			
+			} while (num <= x);
+			
+			break;
+			
+		case MENOR:
+			
+			do {
+			
+			num = keyboard.nextInt();
+			
+			keyboard.nextLine();
+			
+			} while (num >= x);
+			
+			break;
+			
+			default: System.out.println("Ha ocurrido un error al introducir el segundo parámetro");
+			
+			num = 0;
+			
+			break;
+		
+		}
+		
+		}
+		
+		catch (InputMismatchException e) {
+			
+			System.out.println("Error: no se ha introducido un número entero");
+			
+		}
+		
+		return num;
+		
+	}
+	
+	public static double readEqui (double x, Equivalencias equi) {
+		
+		double num = 0;
+		
+		try {
+		
+		switch (equi) {
+		
+		case MAYORIGUAL:
+			
+			do {
+			
+			num = keyboard.nextDouble();
+			
+			keyboard.nextLine();
+			
+			} while (num < x);
+			
+			break;
+			
+		case MENORIGUAL:
+			
+			do {
+			
+			num = keyboard.nextDouble();
+			
+			keyboard.nextLine();
+			
+			} while (num > x);
+			
+			break;
+			
+		case MAYOR:
+			
+			do {
+			
+			num = keyboard.nextDouble();
+			
+			keyboard.nextLine();
+			
+			} while (num <= x);
+			
+			break;
+			
+		case MENOR:
+			
+			do {
+			
+			num = keyboard.nextDouble();
+			
+			keyboard.nextLine();
+			
+			} while (num >= x);
+			
+			break;
+			
+			default: System.out.println("Ha ocurrido un error al introducir el segundo parámetro");
+			
+			num = 0;
+			
+			break;
+		
+		}
+		
+		}
+		
+		catch (InputMismatchException e) {
+			
+			System.out.println("Error: no se ha introducido un número Double");
+			
+		}
+		
+		return num;
+		
+	}
+	
+	public static short readEqui (short x, Equivalencias equi) {
+		
+		short num = 0;
+		
+		try {
+		
+		switch (equi) {
+		
+		case MAYORIGUAL:
+			
+			do {
+			
+			num = keyboard.nextShort();
+			
+			keyboard.nextLine();
+			
+			} while (num < x);
+			
+			break;
+			
+		case MENORIGUAL:
+			
+			do {
+			
+			num = keyboard.nextShort();
+			
+			keyboard.nextLine();
+			
+			} while (num > x);
+			
+			break;
+			
+		case MAYOR:
+			
+			do {
+			
+			num = keyboard.nextShort();
+			
+			keyboard.nextLine();
+			
+			} while (num <= x);
+			
+			break;
+			
+		case MENOR:
+			
+			do {
+			
+			num = keyboard.nextShort();
+			
+			keyboard.nextLine();
+			
+			} while (num >= x);
+			
+			break;
+			
+			default: System.out.println("Ha ocurrido un error al introducir el segundo parámetro");
+			
+			num = 0;
+			
+			break;
+		
+		}
+		
+		}
+		
+		catch (InputMismatchException e) {
+			
+			System.out.println("Error: no se ha introducido un número Short");
+			
+		}
+		
+		return num;
+		
+	}
+	
+	public static byte readEqui (byte x, Equivalencias equi) {
+		
+		byte num = 0;
+		
+		try {
+		
+		switch (equi) {
+		
+		case MAYORIGUAL:
+			
+			do {
+			
+			num = keyboard.nextByte();
+			
+			keyboard.nextLine();
+			
+			} while (num < x);
+			
+			break;
+			
+		case MENORIGUAL:
+			
+			do {
+			
+			num = keyboard.nextByte();
+			
+			keyboard.nextLine();
+			
+			} while (num > x);
+			
+			break;
+			
+		case MAYOR:
+			
+			do {
+			
+			num = keyboard.nextByte();
+			
+			keyboard.nextLine();
+			
+			} while (num <= x);
+			
+			break;
+			
+		case MENOR:
+			
+			do {
+			
+			num = keyboard.nextByte();
+			
+			keyboard.nextLine();
+			
+			} while (num >= x);
+			
+			break;
+			
+			default: System.out.println("Ha ocurrido un error al introducir el segundo parámetro");
+			
+			num = 0;
+			
+			break;
+		
+		}
+		
+		}
+		
+		catch (InputMismatchException e) {
+			
+			System.out.println("Error: no se ha introducido un número Byte");
+			
+		}
+		
+		return num;
+		
+	}
+	
+	public static float readEqui (float x, Equivalencias equi) {
+		
+		float num = 0;
+		
+		try {
+		
+		switch (equi) {
+		
+		case MAYORIGUAL:
+			
+			do {
+			
+			num = keyboard.nextFloat();
+			
+			keyboard.nextLine();
+			
+			} while (num < x);
+			
+			break;
+			
+		case MENORIGUAL:
+			
+			do {
+			
+			num = keyboard.nextFloat();
+			
+			keyboard.nextLine();
+			
+			} while (num > x);
+			
+			break;
+			
+		case MAYOR:
+			
+			do {
+			
+			num = keyboard.nextFloat();
+			
+			keyboard.nextLine();
+			
+			} while (num <= x);
+			
+			break;
+			
+		case MENOR:
+			
+			do {
+			
+			num = keyboard.nextFloat();
+			
+			keyboard.nextLine();
+			
+			} while (num >= x);
+			
+			break;
+			
+			default: System.out.println("Ha ocurrido un error al introducir el segundo parámetro");
+			
+			num = 0;
+			
+			break;
+		
+		}
+		
+		}
+		
+		catch (InputMismatchException e) {
+			
+			System.out.println("Error: no se ha introducido un número Float");
+			
+		}
+		
+		return num;
+		
+	}
+	
+	public static long readEqui (long x, Equivalencias equi) {
+		
+		long num = 0;
+		
+		try {
+		
+		switch (equi) {
+		
+		case MAYORIGUAL:
+			
+			do {
+			
+			num = keyboard.nextLong();
+			
+			keyboard.nextLine();
+			
+			} while (num < x);
+			
+			break;
+			
+		case MENORIGUAL:
+			
+			do {
+			
+			num = keyboard.nextLong();
+			
+			keyboard.nextLine();
+			
+			} while (num > x);
+			
+			break;
+			
+		case MAYOR:
+			
+			do {
+			
+			num = keyboard.nextLong();
+			
+			keyboard.nextLine();
+			
+			} while (num <= x);
+			
+			break;
+			
+		case MENOR:
+			
+			do {
+			
+			num = keyboard.nextLong();
+			
+			keyboard.nextLine();
+			
+			} while (num >= x);
+			
+			break;
+			
+			default: System.out.println("Ha ocurrido un error al introducir el segundo parámetro");
+			
+			num = 0;
+			
+			break;
+		
+		}
+		
+		}
+		
+		catch (InputMismatchException e) {
+			
+			System.out.println("Error: no se ha introducido un número entero");
+			
+		}
+		
+		return num;
+		
+	}
+
+	// Funciones para leer números comprendidos entre un rango.
+	
+	public static int readRange (int min, int max, Rangos ran) {
+		
+		int num=0;
+		
+		if (min > max) {
+			
+			throw new IllegalArgumentException();
+			
+		}
+		
+		else if (min <= max) {
+			
+			try {
+		
+		switch (ran) {
+		
+		case AMBOSIN:
+			
+			do {
+			
+			num = keyboard.nextInt();
+			
+			keyboard.nextLine();
+			
+			} while (num < min || num > max);
+		
+			break;
+			
+		case AMBOSEX:
+			
+			do {
+			
+			num = keyboard.nextInt();
+			
+			keyboard.nextLine();
+			
+			} while (num <= min || num >= max);
+		
+			break;
+			
+		case MININMAXEX:
+			
+			do {
+			
+			num = keyboard.nextInt();
+			
+			keyboard.nextLine();
+			
+			} while (num < min || num >= max);
+		
+			break;
+			
+		case MINEXMAXIN:
+			
+			do {
+			
+			num = keyboard.nextInt();
+			
+			keyboard.nextLine();
+			
+			} while (num <= min || num > max);
+		
+			break;
+			
+			default: System.out.println("Ha ocurrido un error al introducir el tercer parámetro");
+			
+			num = 0;
+			
+			break;
+		
+		
+		}
+		
+			}
+			
+			catch (InputMismatchException e) {
+				
+				System.out.println("Error: no se introducido un número entero");
+				
+			}
+		
+		}
+		
+		return num;
+		
+		
+		
+	}
+	
+	public static double readRange (double min, double max, Rangos ran) {
+		
+		double num=0;
+		
+		if (min > max) {
+			
+			throw new IllegalArgumentException();
+			
+		}
+		
+		else if (min <= max) {
+			
+			try {
+		
+		switch (ran) {
+		
+		case AMBOSIN:
+			
+			do {
+			
+			num = keyboard.nextDouble();
+			
+			keyboard.nextLine();
+			
+			} while (num < min || num > max);
+		
+			break;
+			
+		case AMBOSEX:
+			
+			do {
+			
+			num = keyboard.nextDouble();
+			
+			keyboard.nextLine();
+			
+			} while (num <= min || num >= max);
+		
+			break;
+			
+		case MININMAXEX:
+			
+			do {
+			
+			num = keyboard.nextDouble();
+			
+			keyboard.nextLine();
+			
+			} while (num < min || num >= max);
+		
+			break;
+			
+		case MINEXMAXIN:
+			
+			do {
+			
+			num = keyboard.nextDouble();
+			
+			keyboard.nextLine();
+			
+			} while (num <= min || num > max);
+		
+			break;
+			
+			default: System.out.println("Ha ocurrido un error al introducir el tercer parámetro");
+			
+			num = 0;
+			
+			break;
+		
+		
+		}
+		
+			}
+			
+			catch (InputMismatchException e) {
+				
+				System.out.println("Error: no se introducido un número Double");
+				
+			}
+		
+		}
+		
+		return num;
+		
+		
+		
+	}
+	
+	public static byte readRange (byte min, byte max, Rangos ran) {
+		
+		byte num=0;
+		
+		if (min > max) {
+			
+			throw new IllegalArgumentException();
+			
+		}
+		
+		else if (min <= max) {
+			
+			try {
+		
+		switch (ran) {
+		
+		case AMBOSIN:
+			
+			do {
+			
+			num = keyboard.nextByte();
+			
+			keyboard.nextLine();
+			
+			} while (num < min || num > max);
+		
+			break;
+			
+		case AMBOSEX:
+			
+			do {
+			
+			num = keyboard.nextByte();
+			
+			keyboard.nextByte();
+			
+			} while (num <= min || num >= max);
+		
+			break;
+			
+		case MININMAXEX:
+			
+			do {
+			
+			num = keyboard.nextByte();
+			
+			keyboard.nextLine();
+			
+			} while (num < min || num >= max);
+		
+			break;
+			
+		case MINEXMAXIN:
+			
+			do {
+			
+			num = keyboard.nextByte();
+			
+			keyboard.nextLine();
+			
+			} while (num <= min || num > max);
+		
+			break;
+			
+			default: System.out.println("Ha ocurrido un error al introducir el tercer parámetro");
+			
+			num = 0;
+			
+			break;
+		
+		
+		}
+		
+			}
+			
+			catch (InputMismatchException e) {
+				
+				System.out.println("Error: no se introducido un número Byte");
+				
+			}
+		
+		}
+		
+		return num;
+		
+		
+		
+	}
+	
+	public static short readRange (short min, short max, Rangos ran) {
+		
+		short num=0;
+		
+		if (min > max) {
+			
+			throw new IllegalArgumentException();
+			
+		}
+		
+		else if (min <= max) {
+			
+			try {
+		
+		switch (ran) {
+		
+		case AMBOSIN:
+			
+			do {
+			
+			num = keyboard.nextShort();
+			
+			keyboard.nextLine();
+			
+			} while (num < min || num > max);
+		
+			break;
+			
+		case AMBOSEX:
+			
+			do {
+			
+			num = keyboard.nextShort();
+			
+			keyboard.nextLine();
+			
+			} while (num <= min || num >= max);
+		
+			break;
+			
+		case MININMAXEX:
+			
+			do {
+			
+			num = keyboard.nextShort();
+			
+			keyboard.nextLine();
+			
+			} while (num < min || num >= max);
+		
+			break;
+			
+		case MINEXMAXIN:
+			
+			do {
+			
+			num = keyboard.nextShort();
+			
+			keyboard.nextLine();
+			
+			} while (num <= min || num > max);
+		
+			break;
+			
+			default: System.out.println("Ha ocurrido un error al introducir el tercer parámetro");
+			
+			num = 0;
+			
+			break;
+		
+		
+		}
+		
+			}
+			
+			catch (InputMismatchException e) {
+				
+				System.out.println("Error: no se introducido un número Short");
+				
+			}
+		
+		}
+		
+		return num;
+		
+		
+		
+	}
+	
+	public static float readRange (float min, float max, Rangos ran) {
+		
+		float num=0;
+		
+		if (min > max) {
+			
+			throw new IllegalArgumentException();
+			
+		}
+		
+		else if (min <= max) {
+			
+			try {
+		
+		switch (ran) {
+		
+		case AMBOSIN:
+			
+			do {
+			
+			num = keyboard.nextFloat();
+			
+			keyboard.nextLine();
+			
+			} while (num < min || num > max);
+		
+			break;
+			
+		case AMBOSEX:
+			
+			do {
+			
+			num = keyboard.nextFloat();
+			
+			keyboard.nextLine();
+			
+			} while (num <= min || num >= max);
+		
+			break;
+			
+		case MININMAXEX:
+			
+			do {
+			
+			num = keyboard.nextFloat();
+			
+			keyboard.nextLine();
+			
+			} while (num < min || num >= max);
+		
+			break;
+			
+		case MINEXMAXIN:
+			
+			do {
+			
+			num = keyboard.nextFloat();
+			
+			keyboard.nextLine();
+			
+			} while (num <= min || num > max);
+		
+			break;
+			
+			default: System.out.println("Ha ocurrido un error al introducir el tercer parámetro");
+			
+			num = 0;
+			
+			break;
+		
+		
+		}
+		
+			}
+			
+			catch (InputMismatchException e) {
+				
+				System.out.println("Error: no se introducido un número Float");
+				
+			}
+		
+		}
+		
+		return num;
+		
+		
+		
+	}
+	
+	public static long readRange (long min, long max, Rangos ran) {
+		
+		long num=0;
+		
+		if (min > max) {
+			
+			throw new IllegalArgumentException();
+			
+		}
+		
+		else if (min <= max) {
+			
+			try {
+		
+		switch (ran) {
+		
+		case AMBOSIN:
+			
+			do {
+			
+			num = keyboard.nextLong();
+			
+			keyboard.nextLine();
+			
+			} while (num < min || num > max);
+		
+			break;
+			
+		case AMBOSEX:
+			
+			do {
+			
+			num = keyboard.nextLong();
+			
+			keyboard.nextLong();
+			
+			} while (num <= min || num >= max);
+		
+			break;
+			
+		case MININMAXEX:
+			
+			do {
+			
+			num = keyboard.nextLong();
+			
+			keyboard.nextLine();
+			
+			} while (num < min || num >= max);
+		
+			break;
+			
+		case MINEXMAXIN:
+			
+			do {
+			
+			num = keyboard.nextLong();
+			
+			keyboard.nextLine();
+			
+			} while (num <= min || num > max);
+		
+			break;
+			
+			default: System.out.println("Ha ocurrido un error al introducir el tercer parámetro");
+			
+			num = 0;
+			
+			break;
+		
+		
+		}
+		
+			}
+			
+			catch (InputMismatchException e) {
+				
+				System.out.println("Error: no se introducido un número Long");
+				
+			}
+		
+		}
+		
+		return num;
+		
+		
+		
+	}
 }
+	
