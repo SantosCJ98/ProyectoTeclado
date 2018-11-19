@@ -181,13 +181,19 @@ public class Teclado {
 			
 		}
 		
+		finally {
+			
+			keyboard.nextLine();
+			
+		}
+		
 		return x;
 		
 		
 		
 	}
 	
-	public static int readByte () {
+	public static byte readByte () {
 		
 		byte x=0;
 		
@@ -203,13 +209,19 @@ public class Teclado {
 			
 		}
 		
+		finally {
+			
+			keyboard.nextLine();
+			
+		}
+		
 		return x;
 		
 		
 		
 	}
 	
-	public static int readShort () {
+	public static short readShort () {
 		
 		short x=0;
 		
@@ -222,6 +234,12 @@ public class Teclado {
 		catch (InputMismatchException e) {
 			
 			System.out.println("Error: No has introducido un número Short");
+			
+		}
+		
+	finally {
+			
+			keyboard.nextLine();
 			
 		}
 		
@@ -247,13 +265,19 @@ public class Teclado {
 			
 		}
 		
+		finally {
+			
+			keyboard.nextLine();
+			
+		}
+		
 		return x;
 		
 		
 		
 	}
 	
-	public static double readFloat () {
+	public static float readFloat () {
 		
 		float x=0;
 		
@@ -269,13 +293,19 @@ public class Teclado {
 			
 		}
 		
+		finally {
+			
+			keyboard.nextLine();
+			
+		}
+		
 		return x;
 		
 		
 		
 	}
 	
-	public static double readLong () {
+	public static long readLong () {
 		
 		long x=0;
 		
@@ -288,6 +318,12 @@ public class Teclado {
 		catch (InputMismatchException e) {
 			
 			System.out.println("Error: No has introducido un número Long");
+			
+		}
+		
+		finally {
+			
+			keyboard.nextLine();
 			
 		}
 		
@@ -747,7 +783,7 @@ public class Teclado {
 		
 		catch (InputMismatchException e) {
 			
-			System.out.println("Error: no se ha introducido un número entero");
+			System.out.println("Error: no se ha introducido un número Long");
 			
 		}
 		

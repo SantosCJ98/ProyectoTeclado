@@ -6,7 +6,9 @@ public class Pruebas {
 
 	public static void main(String[] args) {
 		
-		readRange(1, 10, Rangos.MINEXMAXIN);
+		System.out.println(readRange(0, 10, Rangos.MINEXMAXIN));
+		
+		closekb();
 		
 
 	}
