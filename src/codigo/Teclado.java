@@ -1,3 +1,4 @@
+
 package codigo;
 
 import java.util.InputMismatchException;
@@ -123,8 +124,10 @@ public class Teclado {
 
 				error = true;
 
-			} 
+			}
+			
 		} while (error == true);
+		
 		return bolres;
 			
 		
@@ -137,6 +140,8 @@ public class Teclado {
 	public static boolean readBoolean (String mensaje) {
 		
 		boolean res=false;
+		
+		boolean error = false;
 		
 		String x;
 		
@@ -155,10 +160,14 @@ public class Teclado {
 		y = x.charAt(0);
 		
 		} while ((y != 's' && y != 'S') && (y != 'n' && y != 'N'));
+		
+		do {
 	
 		if (y == 's' || y == 'S') {
 			
 			res = true;
+			
+			error = false;
 			
 		}
 		
@@ -166,13 +175,19 @@ public class Teclado {
 			
 			res = false;
 			
+			error = false;
+			
 		}
 		
 		else  {
 			
 			System.out.println("Ha ocurrido un error");
 			
+			error = true;
+			
 		}
+		
+		} while (error == true);
 		
 		return res;
 		
@@ -416,6 +431,10 @@ public class Teclado {
 		
 		int num = 0;
 		
+		boolean error = false;
+		
+		do {
+		
 		try {
 		
 		switch (equi) {
@@ -426,7 +445,7 @@ public class Teclado {
 			
 			num = keyboard.nextInt();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < x);
 			
@@ -438,7 +457,7 @@ public class Teclado {
 			
 			num = keyboard.nextInt();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num > x);
 			
@@ -450,7 +469,7 @@ public class Teclado {
 			
 			num = keyboard.nextInt();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num <= x);
 			
@@ -462,15 +481,9 @@ public class Teclado {
 			
 			num = keyboard.nextInt();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num >= x);
-			
-			break;
-			
-			default: System.out.println("Ha ocurrido un error al introducir el segundo parámetro");
-			
-			num = 0;
 			
 			break;
 		
@@ -482,7 +495,17 @@ public class Teclado {
 			
 			System.out.println("Error: no se ha introducido un número entero");
 			
+			error = true;
+			
 		}
+		
+		finally {
+			
+			keyboard.nextLine();
+			
+		}
+		
+		} while (error == true);
 		
 		return num;
 		
@@ -492,6 +515,10 @@ public class Teclado {
 		
 		double num = 0;
 		
+		boolean error = false;
+		
+		do {
+		
 		try {
 		
 		switch (equi) {
@@ -502,7 +529,7 @@ public class Teclado {
 			
 			num = keyboard.nextDouble();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < x);
 			
@@ -514,7 +541,7 @@ public class Teclado {
 			
 			num = keyboard.nextDouble();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num > x);
 			
@@ -526,7 +553,7 @@ public class Teclado {
 			
 			num = keyboard.nextDouble();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num <= x);
 			
@@ -538,15 +565,9 @@ public class Teclado {
 			
 			num = keyboard.nextDouble();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num >= x);
-			
-			break;
-			
-			default: System.out.println("Ha ocurrido un error al introducir el segundo parámetro");
-			
-			num = 0;
 			
 			break;
 		
@@ -556,94 +577,116 @@ public class Teclado {
 		
 		catch (InputMismatchException e) {
 			
-			System.out.println("Error: no se ha introducido un número Double");
+			System.out.println("Error: no se ha introducido un número double");
+			
+			error = true;
 			
 		}
+		
+		finally {
+			
+			keyboard.nextLine();
+			
+		}
+		
+		} while (error == true);
 		
 		return num;
 		
 	}
 	
 	public static short readEqui (short x, Equivalencias equi) {
+	
+	short num = 0;
+	
+	boolean error = false;
+	
+	do {
+	
+	try {
+	
+	switch (equi) {
+	
+	case MAYORIGUAL:
 		
-		short num = 0;
+		do {
 		
-		try {
+		num = keyboard.nextShort();
 		
-		switch (equi) {
+		error = false;
 		
-		case MAYORIGUAL:
-			
-			do {
-			
-			num = keyboard.nextShort();
-			
-			keyboard.nextLine();
-			
-			} while (num < x);
-			
-			break;
-			
-		case MENORIGUAL:
-			
-			do {
-			
-			num = keyboard.nextShort();
-			
-			keyboard.nextLine();
-			
-			} while (num > x);
-			
-			break;
-			
-		case MAYOR:
-			
-			do {
-			
-			num = keyboard.nextShort();
-			
-			keyboard.nextLine();
-			
-			} while (num <= x);
-			
-			break;
-			
-		case MENOR:
-			
-			do {
-			
-			num = keyboard.nextShort();
-			
-			keyboard.nextLine();
-			
-			} while (num >= x);
-			
-			break;
-			
-			default: System.out.println("Ha ocurrido un error al introducir el segundo parámetro");
-			
-			num = 0;
-			
-			break;
+		} while (num < x);
 		
-		}
+		break;
 		
-		}
+	case MENORIGUAL:
 		
-		catch (InputMismatchException e) {
-			
-			System.out.println("Error: no se ha introducido un número Short");
-			
-		}
+		do {
 		
-		return num;
+		num = keyboard.nextShort();
+		
+		error = false;
+		
+		} while (num > x);
+		
+		break;
+		
+	case MAYOR:
+		
+		do {
+		
+		num = keyboard.nextShort();
+		
+		error = false;
+		
+		} while (num <= x);
+		
+		break;
+		
+	case MENOR:
+		
+		do {
+		
+		num = keyboard.nextShort();
+		
+		error = false;
+		
+		} while (num >= x);
+		
+		break;
+	
+	}
+	
+	}
+	
+	catch (InputMismatchException e) {
+		
+		System.out.println("Error: no se ha introducido un número short");
+		
+		error = true;
 		
 	}
+	
+	finally {
+		
+		keyboard.nextLine();
+		
+	}
+	
+	} while (error == true);
+	
+	return num;
+	
+}
 	
 	public static byte readEqui (byte x, Equivalencias equi) {
 		
 		byte num = 0;
 		
+		boolean error = false;
+		
+		do {
+		
 		try {
 		
 		switch (equi) {
@@ -654,7 +697,7 @@ public class Teclado {
 			
 			num = keyboard.nextByte();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < x);
 			
@@ -666,7 +709,7 @@ public class Teclado {
 			
 			num = keyboard.nextByte();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num > x);
 			
@@ -678,7 +721,7 @@ public class Teclado {
 			
 			num = keyboard.nextByte();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num <= x);
 			
@@ -690,15 +733,9 @@ public class Teclado {
 			
 			num = keyboard.nextByte();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num >= x);
-			
-			break;
-			
-			default: System.out.println("Ha ocurrido un error al introducir el segundo parámetro");
-			
-			num = 0;
 			
 			break;
 		
@@ -708,9 +745,19 @@ public class Teclado {
 		
 		catch (InputMismatchException e) {
 			
-			System.out.println("Error: no se ha introducido un número Byte");
+			System.out.println("Error: no se ha introducido un número byte");
+			
+			error = true;
 			
 		}
+		
+		finally {
+			
+			keyboard.nextLine();
+			
+		}
+		
+		} while (error == true);
 		
 		return num;
 		
@@ -720,6 +767,10 @@ public class Teclado {
 		
 		float num = 0;
 		
+		boolean error = false;
+		
+		do {
+		
 		try {
 		
 		switch (equi) {
@@ -730,7 +781,7 @@ public class Teclado {
 			
 			num = keyboard.nextFloat();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < x);
 			
@@ -742,7 +793,7 @@ public class Teclado {
 			
 			num = keyboard.nextFloat();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num > x);
 			
@@ -754,7 +805,7 @@ public class Teclado {
 			
 			num = keyboard.nextFloat();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num <= x);
 			
@@ -766,15 +817,9 @@ public class Teclado {
 			
 			num = keyboard.nextFloat();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num >= x);
-			
-			break;
-			
-			default: System.out.println("Ha ocurrido un error al introducir el segundo parámetro");
-			
-			num = 0;
 			
 			break;
 		
@@ -784,9 +829,19 @@ public class Teclado {
 		
 		catch (InputMismatchException e) {
 			
-			System.out.println("Error: no se ha introducido un número Float");
+			System.out.println("Error: no se ha introducido un número float");
+			
+			error = true;
 			
 		}
+		
+		finally {
+			
+			keyboard.nextLine();
+			
+		}
+		
+		} while (error == true);
 		
 		return num;
 		
@@ -796,6 +851,10 @@ public class Teclado {
 		
 		long num = 0;
 		
+		boolean error = false;
+		
+		do {
+		
 		try {
 		
 		switch (equi) {
@@ -806,7 +865,7 @@ public class Teclado {
 			
 			num = keyboard.nextLong();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < x);
 			
@@ -818,7 +877,7 @@ public class Teclado {
 			
 			num = keyboard.nextLong();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num > x);
 			
@@ -830,7 +889,7 @@ public class Teclado {
 			
 			num = keyboard.nextLong();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num <= x);
 			
@@ -842,15 +901,9 @@ public class Teclado {
 			
 			num = keyboard.nextLong();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num >= x);
-			
-			break;
-			
-			default: System.out.println("Ha ocurrido un error al introducir el segundo parámetro");
-			
-			num = 0;
 			
 			break;
 		
@@ -860,9 +913,19 @@ public class Teclado {
 		
 		catch (InputMismatchException e) {
 			
-			System.out.println("Error: no se ha introducido un número Long");
+			System.out.println("Error: no se ha introducido un número long");
+			
+			error = true;
 			
 		}
+		
+		finally {
+			
+			keyboard.nextLine();
+			
+		}
+		
+		} while (error == true);
 		
 		return num;
 		
@@ -874,6 +937,8 @@ public class Teclado {
 		
 		int num=0;
 		
+		boolean error = false;
+		
 		if (min > max) {
 			
 			throw new IllegalArgumentException();
@@ -881,6 +946,8 @@ public class Teclado {
 		}
 		
 		else if (min <= max) {
+			
+			do {
 			
 			try {
 		
@@ -892,7 +959,7 @@ public class Teclado {
 			
 			num = keyboard.nextInt();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < min || num > max);
 		
@@ -904,7 +971,7 @@ public class Teclado {
 			
 			num = keyboard.nextInt();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num <= min || num >= max);
 		
@@ -916,7 +983,7 @@ public class Teclado {
 			
 			num = keyboard.nextInt();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < min || num >= max);
 		
@@ -928,16 +995,10 @@ public class Teclado {
 			
 			num = keyboard.nextInt();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num <= min || num > max);
 		
-			break;
-			
-			default: System.out.println("Ha ocurrido un error al introducir el tercer parámetro");
-			
-			num = 0;
-			
 			break;
 		
 		
@@ -949,9 +1010,19 @@ public class Teclado {
 				
 				System.out.println("Error: no se introducido un número entero");
 				
+				error = true;
+				
+			}
+			
+			finally {
+				
+				keyboard.nextLine();
+				
 			}
 		
-		}
+		} while (error == true);
+			
+		} 
 		
 		return num;
 		
@@ -963,6 +1034,8 @@ public class Teclado {
 		
 		double num=0;
 		
+		boolean error = false;
+		
 		if (min > max) {
 			
 			throw new IllegalArgumentException();
@@ -970,6 +1043,8 @@ public class Teclado {
 		}
 		
 		else if (min <= max) {
+			
+			do {
 			
 			try {
 		
@@ -981,7 +1056,7 @@ public class Teclado {
 			
 			num = keyboard.nextDouble();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < min || num > max);
 		
@@ -993,7 +1068,7 @@ public class Teclado {
 			
 			num = keyboard.nextDouble();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num <= min || num >= max);
 		
@@ -1005,7 +1080,7 @@ public class Teclado {
 			
 			num = keyboard.nextDouble();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < min || num >= max);
 		
@@ -1017,16 +1092,10 @@ public class Teclado {
 			
 			num = keyboard.nextDouble();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num <= min || num > max);
 		
-			break;
-			
-			default: System.out.println("Ha ocurrido un error al introducir el tercer parámetro");
-			
-			num = 0;
-			
 			break;
 		
 		
@@ -1036,11 +1105,21 @@ public class Teclado {
 			
 			catch (InputMismatchException e) {
 				
-				System.out.println("Error: no se introducido un número Double");
+				System.out.println("Error: no se introducido un número double");
+				
+				error = true;
+				
+			}
+			
+			finally {
+				
+				keyboard.nextLine();
 				
 			}
 		
-		}
+		} while (error == true);
+			
+		} 
 		
 		return num;
 		
@@ -1052,6 +1131,8 @@ public class Teclado {
 		
 		byte num=0;
 		
+		boolean error = false;
+		
 		if (min > max) {
 			
 			throw new IllegalArgumentException();
@@ -1059,6 +1140,8 @@ public class Teclado {
 		}
 		
 		else if (min <= max) {
+			
+			do {
 			
 			try {
 		
@@ -1070,7 +1153,7 @@ public class Teclado {
 			
 			num = keyboard.nextByte();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < min || num > max);
 		
@@ -1082,7 +1165,7 @@ public class Teclado {
 			
 			num = keyboard.nextByte();
 			
-			keyboard.nextByte();
+			error = false;
 			
 			} while (num <= min || num >= max);
 		
@@ -1094,7 +1177,7 @@ public class Teclado {
 			
 			num = keyboard.nextByte();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < min || num >= max);
 		
@@ -1106,16 +1189,10 @@ public class Teclado {
 			
 			num = keyboard.nextByte();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num <= min || num > max);
 		
-			break;
-			
-			default: System.out.println("Ha ocurrido un error al introducir el tercer parámetro");
-			
-			num = 0;
-			
 			break;
 		
 		
@@ -1125,11 +1202,21 @@ public class Teclado {
 			
 			catch (InputMismatchException e) {
 				
-				System.out.println("Error: no se introducido un número Byte");
+				System.out.println("Error: no se introducido un número byte");
+				
+				error = true;
+				
+			}
+			
+			finally {
+				
+				keyboard.nextLine();
 				
 			}
 		
-		}
+		} while (error == true);
+			
+		} 
 		
 		return num;
 		
@@ -1141,6 +1228,8 @@ public class Teclado {
 		
 		short num=0;
 		
+		boolean error = false;
+		
 		if (min > max) {
 			
 			throw new IllegalArgumentException();
@@ -1148,6 +1237,8 @@ public class Teclado {
 		}
 		
 		else if (min <= max) {
+			
+			do {
 			
 			try {
 		
@@ -1159,7 +1250,7 @@ public class Teclado {
 			
 			num = keyboard.nextShort();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < min || num > max);
 		
@@ -1171,7 +1262,7 @@ public class Teclado {
 			
 			num = keyboard.nextShort();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num <= min || num >= max);
 		
@@ -1183,7 +1274,7 @@ public class Teclado {
 			
 			num = keyboard.nextShort();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < min || num >= max);
 		
@@ -1195,16 +1286,10 @@ public class Teclado {
 			
 			num = keyboard.nextShort();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num <= min || num > max);
 		
-			break;
-			
-			default: System.out.println("Ha ocurrido un error al introducir el tercer parámetro");
-			
-			num = 0;
-			
 			break;
 		
 		
@@ -1214,11 +1299,21 @@ public class Teclado {
 			
 			catch (InputMismatchException e) {
 				
-				System.out.println("Error: no se introducido un número Short");
+				System.out.println("Error: no se introducido un número short");
+				
+				error = true;
+				
+			}
+			
+			finally {
+				
+				keyboard.nextLine();
 				
 			}
 		
-		}
+		} while (error == true);
+			
+		} 
 		
 		return num;
 		
@@ -1230,6 +1325,8 @@ public class Teclado {
 		
 		float num=0;
 		
+		boolean error = false;
+		
 		if (min > max) {
 			
 			throw new IllegalArgumentException();
@@ -1237,6 +1334,8 @@ public class Teclado {
 		}
 		
 		else if (min <= max) {
+			
+			do {
 			
 			try {
 		
@@ -1248,7 +1347,7 @@ public class Teclado {
 			
 			num = keyboard.nextFloat();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < min || num > max);
 		
@@ -1260,7 +1359,7 @@ public class Teclado {
 			
 			num = keyboard.nextFloat();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num <= min || num >= max);
 		
@@ -1272,7 +1371,7 @@ public class Teclado {
 			
 			num = keyboard.nextFloat();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < min || num >= max);
 		
@@ -1284,16 +1383,10 @@ public class Teclado {
 			
 			num = keyboard.nextFloat();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num <= min || num > max);
 		
-			break;
-			
-			default: System.out.println("Ha ocurrido un error al introducir el tercer parámetro");
-			
-			num = 0;
-			
 			break;
 		
 		
@@ -1303,11 +1396,21 @@ public class Teclado {
 			
 			catch (InputMismatchException e) {
 				
-				System.out.println("Error: no se introducido un número Float");
+				System.out.println("Error: no se introducido un número float");
+				
+				error = true;
+				
+			}
+			
+			finally {
+				
+				keyboard.nextLine();
 				
 			}
 		
-		}
+		} while (error == true);
+			
+		} 
 		
 		return num;
 		
@@ -1319,6 +1422,8 @@ public class Teclado {
 		
 		long num=0;
 		
+		boolean error = false;
+		
 		if (min > max) {
 			
 			throw new IllegalArgumentException();
@@ -1326,6 +1431,8 @@ public class Teclado {
 		}
 		
 		else if (min <= max) {
+			
+			do {
 			
 			try {
 		
@@ -1337,7 +1444,7 @@ public class Teclado {
 			
 			num = keyboard.nextLong();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < min || num > max);
 		
@@ -1349,7 +1456,7 @@ public class Teclado {
 			
 			num = keyboard.nextLong();
 			
-			keyboard.nextLong();
+			error = false;
 			
 			} while (num <= min || num >= max);
 		
@@ -1361,7 +1468,7 @@ public class Teclado {
 			
 			num = keyboard.nextLong();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num < min || num >= max);
 		
@@ -1373,16 +1480,10 @@ public class Teclado {
 			
 			num = keyboard.nextLong();
 			
-			keyboard.nextLine();
+			error = false;
 			
 			} while (num <= min || num > max);
 		
-			break;
-			
-			default: System.out.println("Ha ocurrido un error al introducir el tercer parámetro");
-			
-			num = 0;
-			
 			break;
 		
 		
@@ -1392,11 +1493,21 @@ public class Teclado {
 			
 			catch (InputMismatchException e) {
 				
-				System.out.println("Error: no se introducido un número Long");
+				System.out.println("Error: no se introducido un número long");
+				
+				error = true;
+				
+			}
+			
+			finally {
+				
+				keyboard.nextLine();
 				
 			}
 		
-		}
+		} while (error == true);
+			
+		} 
 		
 		return num;
 		
@@ -1404,4 +1515,3 @@ public class Teclado {
 		
 	}
 }
-	
