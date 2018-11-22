@@ -42,7 +42,7 @@ public class Teclado {
 		
 		x = keyboard.nextLine();
 		
-		} while (x.equals(""));
+		} while (x.equals(""));              // Como un caracter no puede valer '', hasta que no sea distinto a ese valor seguira pidiendolo.
 		
 		char y = x.charAt(0);
 	
@@ -85,13 +85,13 @@ public class Teclado {
 
 					error = false;
 
-				} while (res != 1 && res != 2);
+				} while (res != 1 && res != 2);                   // La respuesta debe ser obligatoriamente 1 o 2.
 
 			}
 
 			catch (InputMismatchException e) {
 
-				System.out.println("Error: el tipo de dato introducido no es válido");
+				System.out.println("Error: el tipo de dato introducido no es válido");   //Si no se introduce un número, se introduce un error.
 
 				error = true;
 
@@ -104,7 +104,7 @@ public class Teclado {
 			}
 			if (res == 1) {
 
-				bolres = true;
+				bolres = true;                                          // Si la respuesta es 1, devuelve true
 
 				error = false;
 
@@ -114,19 +114,19 @@ public class Teclado {
 
 				bolres = false;
 
-				error = false;
+				error = false;											// Si la respuesta es 2, devuelve false
 
 			}
 
 			else {
 
-				System.out.println("Ha ocurrido un error");
+				System.out.println("Ha ocurrido un error");				//Si no es ni 1 ni 2, hay un error.
 
 				error = true;
 
 			}
 			
-		} while (error == true);
+		} while (error == true);										//Si hay un error, volvera a pedir el número.
 		
 		return bolres;
 			
@@ -155,11 +155,11 @@ public class Teclado {
 		
 		x = keyboard.nextLine();
 		
-		} while (x.equals(""));
+		} while (x.equals(""));															//El caracter no puede ser '';
 		
 		y = x.charAt(0);
 		
-		} while ((y != 's' && y != 'S') && (y != 'n' && y != 'N'));
+		} while ((y != 's' && y != 'S') && (y != 'n' && y != 'N'));						//El caracter debe ser 's', 'S', 'n' o 'N' obligatoriamente.
 		
 		do {
 	
@@ -169,7 +169,7 @@ public class Teclado {
 			
 			error = false;
 			
-		}
+		}																				//Si el caracter es 's' o 'S', devuelve true.
 		
 		else if (y == 'n' || y == 'N') {
 			
@@ -177,23 +177,23 @@ public class Teclado {
 			
 			error = false;
 			
-		}
+		}																				//Si el caracter es 'n' o 'N', devuelve false.
 		
 		else  {
 			
 			System.out.println("Ha ocurrido un error");
 			
-			error = true;
+			error = true;																//Si no, da error.
 			
 		}
-		
-		} while (error == true);
+				
+		} while (error == true);														// Y si da error, vuelve a pedir los datos.
 		
 		return res;
 		
 	}
 	
-	// Funciones para leer números
+	// Funciones para leer números (Pide el número y si no se introduce un número, o esta fuera del rango, da error, y vuelve a pedirlo)
 	
 	public static int readInt () {
 		
@@ -425,7 +425,7 @@ public class Teclado {
 		
 	}
 	
-	// Funciones para leer numeros con equivalencias
+	// Funciones para leer numeros con equivalencias.
 	
 	public static int readEqui (int x, Equivalencias equi) {
 		
@@ -439,7 +439,7 @@ public class Teclado {
 		
 		switch (equi) {
 		
-		case MAYORIGUAL:
+		case MAYORIGUAL:                                //Introducir un número mayor o igual al del primer parámetro.
 			
 			do {
 			
@@ -451,7 +451,7 @@ public class Teclado {
 			
 			break;
 			
-		case MENORIGUAL:
+		case MENORIGUAL:								//Introducir un número menor o igual al del primer parámetro.
 			
 			do {
 			
@@ -463,7 +463,7 @@ public class Teclado {
 			
 			break;
 			
-		case MAYOR:
+		case MAYOR:										//Introducir un número mayor al del primer parámetro.
 			
 			do {
 			
@@ -475,7 +475,7 @@ public class Teclado {
 			
 			break;
 			
-		case MENOR:
+		case MENOR:										//Introducir un número menor al del primer parámetro.
 			
 			do {
 			
@@ -489,13 +489,15 @@ public class Teclado {
 		
 		}
 		
+		//Se repite mientras no se cumpla el requisito.
+		
 		}
 		
 		catch (InputMismatchException e) {
 			
 			System.out.println("Error: no se ha introducido un número entero");
 			
-			error = true;
+			error = true;															//Si no se introduce un número, o esta fuera del rango, hay un error.
 			
 		}
 		
@@ -505,7 +507,7 @@ public class Teclado {
 			
 		}
 		
-		} while (error == true);
+		} while (error == true);														//Repetir mientras persista el error.
 		
 		return num;
 		
@@ -941,7 +943,7 @@ public class Teclado {
 		
 		if (min > max) {
 			
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException();    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
 			
 		}
 		
@@ -953,7 +955,7 @@ public class Teclado {
 		
 		switch (ran) {
 		
-		case AMBOSIN:
+		case AMBOSIN:					//Ambos extremos incluidos.
 			
 			do {
 			
@@ -965,7 +967,7 @@ public class Teclado {
 		
 			break;
 			
-		case AMBOSEX:
+		case AMBOSEX:						//Ambos extremos excluidos.
 			
 			do {
 			
@@ -977,7 +979,7 @@ public class Teclado {
 		
 			break;
 			
-		case MININMAXEX:
+		case MININMAXEX:					//Extremo inferior incluido y exterior incluido
 			
 			do {
 			
@@ -989,7 +991,7 @@ public class Teclado {
 		
 			break;
 			
-		case MINEXMAXIN:
+		case MINEXMAXIN:						//Extremo inferior incluido y exterior excluido.
 			
 			do {
 			
@@ -1004,13 +1006,16 @@ public class Teclado {
 		
 		}
 		
+		
+		//Se repite mientras no se cumpla el requisito.
+		
 			}
 			
 			catch (InputMismatchException e) {
 				
 				System.out.println("Error: no se introducido un número entero");
 				
-				error = true;
+				error = true;						//Si no se introduce un número, o esta fuera del rango, se produce un error.
 				
 			}
 			
@@ -1020,13 +1025,11 @@ public class Teclado {
 				
 			}
 		
-		} while (error == true);
+		} while (error == true);						//Repetir mientras persiste el error.
 			
 		} 
 		
 		return num;
-		
-		
 		
 	}
 	
