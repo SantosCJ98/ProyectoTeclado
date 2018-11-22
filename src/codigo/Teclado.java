@@ -58,7 +58,13 @@ public class Teclado {
 	
 	public static String readString() {
 		
-		String x = keyboard.nextLine();
+		String x;
+		
+		do {
+		
+		x = keyboard.nextLine();
+		
+		} while (x.equals(""));
 		
 		return x;
 		
