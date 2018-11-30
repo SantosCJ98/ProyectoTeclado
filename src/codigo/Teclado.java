@@ -43,10 +43,8 @@ public class Teclado {
 		x = keyboard.nextLine();
 		
 		} while (x.equals(""));              // Como un caracter no puede valer '', hasta que no sea distinto a ese valor seguira pidiendolo.
-		
-		char y = x.charAt(0);
 	
-		return y;
+		return x.charAt(0);
 		
 		
 		
@@ -74,128 +72,32 @@ public class Teclado {
 	
 	public static boolean readBoolean (String mensaje, String mensaje2, String mensaje3) {
 		
-		int res=0;
+		int res;
+
+
+		System.out.printf("%s%n1.%s%n2.%s%n", mensaje, mensaje2, mensaje3);
+
+		res = readRange(1, 2, Rangos.AMBOSIN);
 		
-		boolean bolres=false;
-		
-		boolean error = false;
-		
-		do {
-			try {
+		return res == 1;
 
-				do {
-
-					System.out.printf("%s%n1.%s%n2.%s%n", mensaje, mensaje2, mensaje3);
-
-					res = keyboard.nextInt();
-
-					error = false;
-
-				} while (res != 1 && res != 2);                   // La respuesta debe ser obligatoriamente 1 o 2.
-
-			}
-
-			catch (InputMismatchException e) {
-
-				System.out.println("Error: el tipo de dato introducido no es válido");   //Si no se introduce un número, se introduce un error.
-
-				error = true;
-
-			}
-
-			finally {
-
-				keyboard.nextLine();
-
-			}
-			if (res == 1) {
-
-				bolres = true;                                          // Si la respuesta es 1, devuelve true
-
-				error = false;
-
-			}
-
-			else if (res == 2) {
-
-				bolres = false;
-
-				error = false;											// Si la respuesta es 2, devuelve false
-
-			}
-
-			else {
-
-				System.out.println("Ha ocurrido un error");				//Si no es ni 1 ni 2, hay un error.
-
-				error = true;
-
-			}
-			
-		} while (error == true);										//Si hay un error, volvera a pedir el número.
-		
-		return bolres;
-			
-		
-		
-		
-	}
+		}
 	
 	// Función para leer booleano (Respuesta s/n || S/N)
 	
 	public static boolean readBoolean (String mensaje) {
 		
-		boolean res=false;
-		
-		boolean error = false;
-		
-		String x;
-		
 		char y;
 		
 		do {
-		
-		do {
-		
-		System.out.printf("%s (s/n)%n", mensaje);
-		
-		x = keyboard.nextLine();
-		
-		} while (x.equals(""));															//El caracter no puede ser '';
-		
-		y = x.charAt(0);
-		
-		} while ((y != 's' && y != 'S') && (y != 'n' && y != 'N'));						//El caracter debe ser 's', 'S', 'n' o 'N' obligatoriamente.
-		
-		do {
-	
-		if (y == 's' || y == 'S') {
 			
-			res = true;
+			System.out.printf("%s (s/n)%n", mensaje);
 			
-			error = false;
+			y = Character.toLowerCase(readChar());
 			
-		}																				//Si el caracter es 's' o 'S', devuelve true.
+		} while (y != 's' && y != 'n');
 		
-		else if (y == 'n' || y == 'N') {
-			
-			res = false;
-			
-			error = false;
-			
-		}																				//Si el caracter es 'n' o 'N', devuelve false.
-		
-		else  {
-			
-			System.out.println("Ha ocurrido un error");
-			
-			error = true;																//Si no, da error.
-			
-		}
-				
-		} while (error == true);														// Y si da error, vuelve a pedir los datos.
-		
-		return res;
+		return y == 's';
 		
 	}
 	
@@ -231,7 +133,7 @@ public class Teclado {
 			
 		}
 		
-		} while (error == true);
+		} while (error);
 		
 		return x;
 		
@@ -307,7 +209,7 @@ public class Teclado {
 			
 		}
 		
-		} while (error == true);
+		} while (error);
 		
 		return x;
 		
@@ -345,7 +247,7 @@ public class Teclado {
 			
 		}
 		
-		} while (error == true);
+		} while (error);
 		
 		return x;
 		
@@ -384,7 +286,7 @@ public class Teclado {
 			
 		}
 		
-		} while (error == true);
+		} while (error);
 		
 		return x;
 		
@@ -423,7 +325,7 @@ public class Teclado {
 			
 		}
 		
-		} while (error == true);
+		} while (error);
 		
 		return x;
 		
@@ -437,21 +339,13 @@ public class Teclado {
 		
 		int num = 0;
 		
-		boolean error = false;
-		
-		do {
-		
-		try {
-		
 		switch (equi) {
 		
 		case MAYORIGUAL:                                //Introducir un número mayor o igual al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextInt();
-			
-			error = false;
+			num = readInt();
 			
 			} while (num < x);
 			
@@ -461,9 +355,7 @@ public class Teclado {
 			
 			do {
 			
-			num = keyboard.nextInt();
-			
-			error = false;
+			num = readInt();
 			
 			} while (num > x);
 			
@@ -473,9 +365,7 @@ public class Teclado {
 			
 			do {
 			
-			num = keyboard.nextInt();
-			
-			error = false;
+			num = readInt();
 			
 			} while (num <= x);
 			
@@ -485,459 +375,278 @@ public class Teclado {
 			
 			do {
 			
-			num = keyboard.nextInt();
-			
-			error = false;
-			
+			num = readInt();
+				
 			} while (num >= x);
 			
 			break;
 		
 		}
-		
-		//Se repite mientras no se cumpla el requisito.
-		
-		}
-		
-		catch (InputMismatchException e) {
-			
-			System.out.println("Error: no se ha introducido un número entero");
-			
-			error = true;															//Si no se introduce un número, o esta fuera del rango, hay un error.
-			
-		}
-		
-		finally {
-			
-			keyboard.nextLine();
-			
-		}
-		
-		} while (error == true);														//Repetir mientras persista el error.
 		
 		return num;
 		
 	}
 	
+
 	public static double readEqui (double x, Equivalencias equi) {
 		
 		double num = 0;
 		
-		boolean error = false;
-		
-		do {
-		
-		try {
-		
 		switch (equi) {
 		
-		case MAYORIGUAL:
+		case MAYORIGUAL:                                //Introducir un número mayor o igual al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextDouble();
-			
-			error = false;
+			num = readDouble();
 			
 			} while (num < x);
 			
 			break;
 			
-		case MENORIGUAL:
+		case MENORIGUAL:								//Introducir un número menor o igual al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextDouble();
-			
-			error = false;
+			num = readDouble();
 			
 			} while (num > x);
 			
 			break;
 			
-		case MAYOR:
+		case MAYOR:										//Introducir un número mayor al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextDouble();
-			
-			error = false;
+			num = readDouble();
 			
 			} while (num <= x);
 			
 			break;
 			
-		case MENOR:
+		case MENOR:										//Introducir un número menor al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextDouble();
-			
-			error = false;
-			
+			num = readDouble();
+				
 			} while (num >= x);
 			
 			break;
 		
 		}
-		
-		}
-		
-		catch (InputMismatchException e) {
-			
-			System.out.println("Error: no se ha introducido un número double");
-			
-			error = true;
-			
-		}
-		
-		finally {
-			
-			keyboard.nextLine();
-			
-		}
-		
-		} while (error == true);
 		
 		return num;
 		
 	}
 	
 	public static short readEqui (short x, Equivalencias equi) {
-	
-	short num = 0;
-	
-	boolean error = false;
-	
-	do {
-	
-	try {
-	
-	switch (equi) {
-	
-	case MAYORIGUAL:
 		
-		do {
+		short num = 0;
 		
-		num = keyboard.nextShort();
+		switch (equi) {
 		
-		error = false;
+		case MAYORIGUAL:                                //Introducir un número mayor o igual al del primer parámetro.
+			
+			do {
+			
+			num = readShort();
+			
+			} while (num < x);
+			
+			break;
+			
+		case MENORIGUAL:								//Introducir un número menor o igual al del primer parámetro.
+			
+			do {
+			
+			num = readShort();
+			
+			} while (num > x);
+			
+			break;
+			
+		case MAYOR:										//Introducir un número mayor al del primer parámetro.
+			
+			do {
+			
+			num = readShort();
+			
+			} while (num <= x);
+			
+			break;
+			
+		case MENOR:										//Introducir un número menor al del primer parámetro.
+			
+			do {
+			
+			num = readShort();
+				
+			} while (num >= x);
+			
+			break;
 		
-		} while (num < x);
+		}
 		
-		break;
+		return num;
 		
-	case MENORIGUAL:
-		
-		do {
-		
-		num = keyboard.nextShort();
-		
-		error = false;
-		
-		} while (num > x);
-		
-		break;
-		
-	case MAYOR:
-		
-		do {
-		
-		num = keyboard.nextShort();
-		
-		error = false;
-		
-		} while (num <= x);
-		
-		break;
-		
-	case MENOR:
-		
-		do {
-		
-		num = keyboard.nextShort();
-		
-		error = false;
-		
-		} while (num >= x);
-		
-		break;
-	
-	}
-	
-	}
-	
-	catch (InputMismatchException e) {
-		
-		System.out.println("Error: no se ha introducido un número short");
-		
-		error = true;
-		
-	}
-	
-	finally {
-		
-		keyboard.nextLine();
-		
-	}
-	
-	} while (error == true);
-	
-	return num;
-	
-}
+	}	
 	
 	public static byte readEqui (byte x, Equivalencias equi) {
 		
 		byte num = 0;
 		
-		boolean error = false;
-		
-		do {
-		
-		try {
-		
 		switch (equi) {
 		
-		case MAYORIGUAL:
+		case MAYORIGUAL:                                //Introducir un número mayor o igual al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextByte();
-			
-			error = false;
+			num = readByte();
 			
 			} while (num < x);
 			
 			break;
 			
-		case MENORIGUAL:
+		case MENORIGUAL:								//Introducir un número menor o igual al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextByte();
-			
-			error = false;
+			num = readByte();
 			
 			} while (num > x);
 			
 			break;
 			
-		case MAYOR:
+		case MAYOR:										//Introducir un número mayor al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextByte();
-			
-			error = false;
+			num = readByte();
 			
 			} while (num <= x);
 			
 			break;
 			
-		case MENOR:
+		case MENOR:										//Introducir un número menor al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextByte();
-			
-			error = false;
-			
+			num = readByte();
+				
 			} while (num >= x);
 			
 			break;
 		
 		}
 		
-		}
-		
-		catch (InputMismatchException e) {
-			
-			System.out.println("Error: no se ha introducido un número byte");
-			
-			error = true;
-			
-		}
-		
-		finally {
-			
-			keyboard.nextLine();
-			
-		}
-		
-		} while (error == true);
-		
 		return num;
 		
-	}
-	
+	}	
+
 	public static float readEqui (float x, Equivalencias equi) {
 		
 		float num = 0;
 		
-		boolean error = false;
-		
-		do {
-		
-		try {
-		
 		switch (equi) {
 		
-		case MAYORIGUAL:
+		case MAYORIGUAL:                                //Introducir un número mayor o igual al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextFloat();
-			
-			error = false;
+			num = readFloat();
 			
 			} while (num < x);
 			
 			break;
 			
-		case MENORIGUAL:
+		case MENORIGUAL:								//Introducir un número menor o igual al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextFloat();
-			
-			error = false;
+			num = readFloat();
 			
 			} while (num > x);
 			
 			break;
 			
-		case MAYOR:
+		case MAYOR:										//Introducir un número mayor al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextFloat();
-			
-			error = false;
+			num = readFloat();
 			
 			} while (num <= x);
 			
 			break;
 			
-		case MENOR:
+		case MENOR:										//Introducir un número menor al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextFloat();
-			
-			error = false;
-			
+			num = readFloat();
+				
 			} while (num >= x);
 			
 			break;
 		
 		}
 		
-		}
-		
-		catch (InputMismatchException e) {
-			
-			System.out.println("Error: no se ha introducido un número float");
-			
-			error = true;
-			
-		}
-		
-		finally {
-			
-			keyboard.nextLine();
-			
-		}
-		
-		} while (error == true);
-		
 		return num;
 		
-	}
+	}	
 	
 	public static long readEqui (long x, Equivalencias equi) {
 		
 		long num = 0;
 		
-		boolean error = false;
-		
-		do {
-		
-		try {
-		
 		switch (equi) {
 		
-		case MAYORIGUAL:
+		case MAYORIGUAL:                                //Introducir un número mayor o igual al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextLong();
-			
-			error = false;
+			num = readLong();
 			
 			} while (num < x);
 			
 			break;
 			
-		case MENORIGUAL:
+		case MENORIGUAL:								//Introducir un número menor o igual al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextLong();
-			
-			error = false;
+			num = readLong();
 			
 			} while (num > x);
 			
 			break;
 			
-		case MAYOR:
+		case MAYOR:										//Introducir un número mayor al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextLong();
-			
-			error = false;
+			num = readLong();
 			
 			} while (num <= x);
 			
 			break;
 			
-		case MENOR:
+		case MENOR:										//Introducir un número menor al del primer parámetro.
 			
 			do {
 			
-			num = keyboard.nextLong();
-			
-			error = false;
-			
+			num = readLong();
+				
 			} while (num >= x);
 			
 			break;
 		
 		}
 		
-		}
-		
-		catch (InputMismatchException e) {
-			
-			System.out.println("Error: no se ha introducido un número long");
-			
-			error = true;
-			
-		}
-		
-		finally {
-			
-			keyboard.nextLine();
-			
-		}
-		
-		} while (error == true);
-		
 		return num;
 		
-	}
+	}	
 
 	// Funciones para leer números comprendidos entre un rango.
 	
@@ -945,19 +654,13 @@ public class Teclado {
 		
 		int num=0;
 		
-		boolean error = false;
-		
 		if (min > max) {
 			
-			throw new IllegalArgumentException();    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
+			throw new IllegalArgumentException("El número minimo no puede ser mayor al máximo");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
 			
 		}
 		
 		else if (min <= max) {
-			
-			do {
-			
-			try {
 		
 		switch (ran) {
 		
@@ -965,9 +668,7 @@ public class Teclado {
 			
 			do {
 			
-			num = keyboard.nextInt();
-			
-			error = false;
+			num = readInt();
 			
 			} while (num < min || num > max);
 		
@@ -977,9 +678,7 @@ public class Teclado {
 			
 			do {
 			
-			num = keyboard.nextInt();
-			
-			error = false;
+			num = readInt();
 			
 			} while (num <= min || num >= max);
 		
@@ -989,9 +688,7 @@ public class Teclado {
 			
 			do {
 			
-			num = keyboard.nextInt();
-			
-			error = false;
+			num = readInt();
 			
 			} while (num < min || num >= max);
 		
@@ -1001,9 +698,7 @@ public class Teclado {
 			
 			do {
 			
-			num = keyboard.nextInt();
-			
-			error = false;
+			num = readInt();
 			
 			} while (num <= min || num > max);
 		
@@ -1012,96 +707,62 @@ public class Teclado {
 		
 		}
 		
-		
-		//Se repite mientras no se cumpla el requisito.
-		
-			}
-			
-			catch (InputMismatchException e) {
-				
-				System.out.println("Error: no se introducido un número entero");
-				
-				error = true;						//Si no se introduce un número, o esta fuera del rango, se produce un error.
-				
-			}
-			
-			finally {
-				
-				keyboard.nextLine();
-				
-			}
-		
-		} while (error == true);						//Repetir mientras persiste el error.
-			
-		} 
+		}
 		
 		return num;
 		
 	}
 	
+
 	public static double readRange (double min, double max, Rangos ran) {
 		
 		double num=0;
 		
-		boolean error = false;
-		
 		if (min > max) {
 			
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("El número minimo no puede ser mayor al máximo");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
 			
 		}
 		
 		else if (min <= max) {
-			
-			do {
-			
-			try {
 		
 		switch (ran) {
 		
-		case AMBOSIN:
+		case AMBOSIN:					//Ambos extremos incluidos.
 			
 			do {
 			
-			num = keyboard.nextDouble();
-			
-			error = false;
+			num = readDouble();
 			
 			} while (num < min || num > max);
 		
 			break;
 			
-		case AMBOSEX:
+		case AMBOSEX:						//Ambos extremos excluidos.
 			
 			do {
 			
-			num = keyboard.nextDouble();
-			
-			error = false;
+			num = readDouble();
 			
 			} while (num <= min || num >= max);
 		
 			break;
 			
-		case MININMAXEX:
+		case MININMAXEX:					//Extremo inferior incluido y exterior incluido
 			
 			do {
 			
-			num = keyboard.nextDouble();
-			
-			error = false;
+			num = readDouble();
 			
 			} while (num < min || num >= max);
 		
 			break;
 			
-		case MINEXMAXIN:
+		case MINEXMAXIN:						//Extremo inferior incluido y exterior excluido.
 			
 			do {
 			
-			num = keyboard.nextDouble();
-			
-			error = false;
+			num = readDouble();
 			
 			} while (num <= min || num > max);
 		
@@ -1110,95 +771,61 @@ public class Teclado {
 		
 		}
 		
-			}
-			
-			catch (InputMismatchException e) {
-				
-				System.out.println("Error: no se introducido un número double");
-				
-				error = true;
-				
-			}
-			
-			finally {
-				
-				keyboard.nextLine();
-				
-			}
-		
-		} while (error == true);
-			
-		} 
+		}
 		
 		return num;
 		
-		
-		
 	}
-	
+
 	public static byte readRange (byte min, byte max, Rangos ran) {
 		
 		byte num=0;
 		
-		boolean error = false;
-		
 		if (min > max) {
 			
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("El número minimo no puede ser mayor al máximo");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
 			
 		}
 		
 		else if (min <= max) {
-			
-			do {
-			
-			try {
 		
 		switch (ran) {
 		
-		case AMBOSIN:
+		case AMBOSIN:					//Ambos extremos incluidos.
 			
 			do {
 			
-			num = keyboard.nextByte();
-			
-			error = false;
+			num = readByte();
 			
 			} while (num < min || num > max);
 		
 			break;
 			
-		case AMBOSEX:
+		case AMBOSEX:						//Ambos extremos excluidos.
 			
 			do {
 			
-			num = keyboard.nextByte();
-			
-			error = false;
+			num = readByte();
 			
 			} while (num <= min || num >= max);
 		
 			break;
 			
-		case MININMAXEX:
+		case MININMAXEX:					//Extremo inferior incluido y exterior incluido
 			
 			do {
 			
-			num = keyboard.nextByte();
-			
-			error = false;
+			num = readByte();
 			
 			} while (num < min || num >= max);
 		
 			break;
 			
-		case MINEXMAXIN:
+		case MINEXMAXIN:						//Extremo inferior incluido y exterior excluido.
 			
 			do {
 			
-			num = keyboard.nextByte();
-			
-			error = false;
+			num = readByte();
 			
 			} while (num <= min || num > max);
 		
@@ -1207,95 +834,62 @@ public class Teclado {
 		
 		}
 		
-			}
-			
-			catch (InputMismatchException e) {
-				
-				System.out.println("Error: no se introducido un número byte");
-				
-				error = true;
-				
-			}
-			
-			finally {
-				
-				keyboard.nextLine();
-				
-			}
-		
-		} while (error == true);
-			
-		} 
+		}
 		
 		return num;
 		
-		
-		
 	}
 	
+
 	public static short readRange (short min, short max, Rangos ran) {
 		
 		short num=0;
 		
-		boolean error = false;
-		
 		if (min > max) {
 			
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("El número minimo no puede ser mayor al máximo");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
 			
 		}
 		
 		else if (min <= max) {
-			
-			do {
-			
-			try {
 		
 		switch (ran) {
 		
-		case AMBOSIN:
+		case AMBOSIN:					//Ambos extremos incluidos.
 			
 			do {
 			
-			num = keyboard.nextShort();
-			
-			error = false;
+			num = readShort();
 			
 			} while (num < min || num > max);
 		
 			break;
 			
-		case AMBOSEX:
+		case AMBOSEX:						//Ambos extremos excluidos.
 			
 			do {
 			
-			num = keyboard.nextShort();
-			
-			error = false;
+			num = readShort();
 			
 			} while (num <= min || num >= max);
 		
 			break;
 			
-		case MININMAXEX:
+		case MININMAXEX:					//Extremo inferior incluido y exterior incluido
 			
 			do {
 			
-			num = keyboard.nextShort();
-			
-			error = false;
+			num = readShort();
 			
 			} while (num < min || num >= max);
 		
 			break;
 			
-		case MINEXMAXIN:
+		case MINEXMAXIN:						//Extremo inferior incluido y exterior excluido.
 			
 			do {
 			
-			num = keyboard.nextShort();
-			
-			error = false;
+			num = readShort();
 			
 			} while (num <= min || num > max);
 		
@@ -1304,95 +898,64 @@ public class Teclado {
 		
 		}
 		
-			}
-			
-			catch (InputMismatchException e) {
-				
-				System.out.println("Error: no se introducido un número short");
-				
-				error = true;
-				
-			}
-			
-			finally {
-				
-				keyboard.nextLine();
-				
-			}
-		
-		} while (error == true);
-			
-		} 
+		}
 		
 		return num;
 		
-		
-		
 	}
 	
+
+	
+
 	public static float readRange (float min, float max, Rangos ran) {
 		
 		float num=0;
 		
-		boolean error = false;
-		
 		if (min > max) {
 			
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("El número minimo no puede ser mayor al máximo");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
 			
 		}
 		
 		else if (min <= max) {
-			
-			do {
-			
-			try {
 		
 		switch (ran) {
 		
-		case AMBOSIN:
+		case AMBOSIN:					//Ambos extremos incluidos.
 			
 			do {
 			
-			num = keyboard.nextFloat();
-			
-			error = false;
+			num = readFloat();
 			
 			} while (num < min || num > max);
 		
 			break;
 			
-		case AMBOSEX:
+		case AMBOSEX:						//Ambos extremos excluidos.
 			
 			do {
 			
-			num = keyboard.nextFloat();
-			
-			error = false;
+			num = readFloat();
 			
 			} while (num <= min || num >= max);
 		
 			break;
 			
-		case MININMAXEX:
+		case MININMAXEX:					//Extremo inferior incluido y exterior incluido
 			
 			do {
 			
-			num = keyboard.nextFloat();
-			
-			error = false;
+			num = readFloat();
 			
 			} while (num < min || num >= max);
 		
 			break;
 			
-		case MINEXMAXIN:
+		case MINEXMAXIN:						//Extremo inferior incluido y exterior excluido.
 			
 			do {
 			
-			num = keyboard.nextFloat();
-			
-			error = false;
+			num = readFloat();
 			
 			} while (num <= min || num > max);
 		
@@ -1401,95 +964,64 @@ public class Teclado {
 		
 		}
 		
-			}
-			
-			catch (InputMismatchException e) {
-				
-				System.out.println("Error: no se introducido un número float");
-				
-				error = true;
-				
-			}
-			
-			finally {
-				
-				keyboard.nextLine();
-				
-			}
-		
-		} while (error == true);
-			
-		} 
+		}
 		
 		return num;
 		
-		
-		
 	}
 	
+
+	
+
 	public static long readRange (long min, long max, Rangos ran) {
 		
 		long num=0;
 		
-		boolean error = false;
-		
 		if (min > max) {
 			
-			throw new IllegalArgumentException();
+			throw new IllegalArgumentException("El número minimo no puede ser mayor al máximo");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
 			
 		}
 		
 		else if (min <= max) {
-			
-			do {
-			
-			try {
 		
 		switch (ran) {
 		
-		case AMBOSIN:
+		case AMBOSIN:					//Ambos extremos incluidos.
 			
 			do {
 			
-			num = keyboard.nextLong();
-			
-			error = false;
+			num = readLong();
 			
 			} while (num < min || num > max);
 		
 			break;
 			
-		case AMBOSEX:
+		case AMBOSEX:						//Ambos extremos excluidos.
 			
 			do {
 			
-			num = keyboard.nextLong();
-			
-			error = false;
+			num = readLong();
 			
 			} while (num <= min || num >= max);
 		
 			break;
 			
-		case MININMAXEX:
+		case MININMAXEX:					//Extremo inferior incluido y exterior incluido
 			
 			do {
 			
-			num = keyboard.nextLong();
-			
-			error = false;
+			num = readLong();
 			
 			} while (num < min || num >= max);
 		
 			break;
 			
-		case MINEXMAXIN:
+		case MINEXMAXIN:						//Extremo inferior incluido y exterior excluido.
 			
 			do {
 			
-			num = keyboard.nextLong();
-			
-			error = false;
+			num = readLong();
 			
 			} while (num <= min || num > max);
 		
@@ -1498,29 +1030,19 @@ public class Teclado {
 		
 		}
 		
-			}
-			
-			catch (InputMismatchException e) {
-				
-				System.out.println("Error: no se introducido un número long");
-				
-				error = true;
-				
-			}
-			
-			finally {
-				
-				keyboard.nextLine();
-				
-			}
-		
-		} while (error == true);
-			
-		} 
+		}
 		
 		return num;
 		
+	}
+	
+
+	
+	public static void main (String args[]) {
 		
+		System.out.println(readBoolean("1"));
+
 		
 	}
+	
 }
