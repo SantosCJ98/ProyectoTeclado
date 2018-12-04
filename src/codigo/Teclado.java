@@ -653,9 +653,9 @@ public class Teclado {
 		
 		int num=0;
 		
-		if (min > max) {
+		if (min > max || (max - min < 2 && ran == Rangos.AMBOSEX)) {
 			
-			throw new IllegalArgumentException("El número minimo no puede ser mayor al máximo");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
+			throw new IllegalArgumentException("Rango no valido");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
 			
 		}
 		
@@ -717,9 +717,9 @@ public class Teclado {
 		
 		double num=0;
 		
-		if (min > max) {
+		if (min > max || (max - min < 2 && ran == Rangos.AMBOSEX)) {
 			
-			throw new IllegalArgumentException("El número minimo no puede ser mayor al máximo");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
+			throw new IllegalArgumentException("Rango no valido");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
 			
 		}
 		
@@ -780,9 +780,9 @@ public class Teclado {
 		
 		byte num=0;
 		
-		if (min > max) {
+		if (min > max || (max - min < 2 && ran == Rangos.AMBOSEX)) {
 			
-			throw new IllegalArgumentException("El número minimo no puede ser mayor al máximo");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
+			throw new IllegalArgumentException("Rango no valido");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
 			
 		}
 		
@@ -844,9 +844,9 @@ public class Teclado {
 		
 		short num=0;
 		
-		if (min > max) {
+		if (min > max || (max - min < 2 && ran == Rangos.AMBOSEX)) {
 			
-			throw new IllegalArgumentException("El número minimo no puede ser mayor al máximo");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
+			throw new IllegalArgumentException("Rango no valido");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
 			
 		}
 		
@@ -910,9 +910,9 @@ public class Teclado {
 		
 		float num=0;
 		
-		if (min > max) {
+		if (min > max || (max - min < 2 && ran == Rangos.AMBOSEX)) {
 			
-			throw new IllegalArgumentException("El número minimo no puede ser mayor al máximo");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
+			throw new IllegalArgumentException("Rango no valido");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
 			
 		}
 		
@@ -976,9 +976,9 @@ public class Teclado {
 		
 		long num=0;
 		
-		if (min > max) {
+		if (min > max || (max - min < 2 && ran == Rangos.AMBOSEX)) {
 			
-			throw new IllegalArgumentException("El número minimo no puede ser mayor al máximo");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
+			throw new IllegalArgumentException("Rango no valido");    //Si el extremo máximo es menor que el mínimo, lanzar excepcion.
 			
 		}
 		
@@ -1037,33 +1037,242 @@ public class Teclado {
 	
 	public static void main (String args[]) {
 		
-	//	readInt();
+		boolean salir = false;
 		
-	//	readDouble();
+		System.out.println("CARACTERES");
 		
-	//	readShort();
+		do {
 		
-	//	readByte();
+		System.out.println("Introduce un caracter para probarlo:");
 		
-	//	readFloat();
+		System.out.println(readChar());
 		
-	//	readLong();
+		salir = readBoolean("¿Quieres probar otra vez?");
 		
-	//	readChar();
+		} while (salir);
 		
-	//	readString();
 		
-	//	readBoolean("¿True of False?", "True", "False");
 		
-	//	readBoolean("¿Si o No?");
+		salir = false;
 		
-	//	readEqui(5.8, Equivalencias.MENORIGUAL);
+		System.out.println("CADENAS");
 		
-	//	readRange(1, 10, Rangos.AMBOSIN);
+		do {
 		
-	//	readRange(20, 10, Rangos.AMBOSEX);
+		System.out.println("Introduce una cadena para probarlo:");
 		
-	//	readRange(2.4, 7.9, Rangos.MININMAXEX);
+		System.out.println(readString());
+		
+		salir = readBoolean("¿Quieres probar otra vez?");
+		
+		} while (salir);
+		
+		
+		
+		salir = false;
+		
+		System.out.println("BOOLEANO");
+		
+		do {
+		
+		System.out.println(readBoolean("Introduce 1 o 2", "Uno", "Dos"));
+		
+		salir = readBoolean("¿Quieres probar otra vez?");
+		
+		} while (salir);
+		
+		
+		salir = false;
+		
+		System.out.println("INT");
+		
+		do {
+		
+		System.out.println("Introduce un INT para probarlo:");
+		
+		System.out.println(readInt());
+		
+		salir = readBoolean("¿Quieres probar otra vez?");
+		
+		} while (salir);
+		
+		
+		salir = false;
+		
+		System.out.println("DOUBLE");
+		
+		do {
+		
+		System.out.println("Introduce un double para probarlo:");
+		
+		System.out.println(readDouble());
+		
+		salir = readBoolean("¿Quieres probar otra vez?");
+		
+		} while (salir);
+		
+		
+		salir = false;
+		
+		System.out.println("Short");
+		
+		do {
+		
+		System.out.println("Introduce un short para probarlo:");
+		
+		System.out.println(readShort());
+		
+		salir = readBoolean("¿Quieres probar otra vez?");
+		
+		} while (salir);
+		
+		
+		salir = false;
+		
+		System.out.println("Byte");
+		
+		do {
+		
+		System.out.println("Introduce un Byte para probarlo:");
+		
+		System.out.println(readByte());
+		
+		salir = readBoolean("¿Quieres probar otra vez?");
+		
+		} while (salir);
+		
+		salir = false;
+		
+		System.out.println("Float");
+		
+		do {
+		
+		System.out.println("Introduce un float para probarlo:");
+		
+		System.out.println(readFloat());
+		
+		salir = readBoolean("¿Quieres probar otra vez?");
+		
+		} while (salir);
+		
+		salir = false;
+		
+		System.out.println("Long");
+		
+		do {
+		
+		System.out.println("Introduce un long para probarlo:");
+		
+		System.out.println(readLong());
+		
+		salir = readBoolean("¿Quieres probar otra vez?");
+		
+		} while (salir);
+		
+		System.out.println("LIMITES");
+		
+		salir = false;
+		
+		do {
+		
+		System.out.println("Introduce un número mayor o igual que 9:");
+		
+		System.out.println(readEqui(9, Equivalencias.MAYORIGUAL));
+		
+		salir = readBoolean("¿Quieres probar otra vez?");
+		
+		} while (salir);
+		
+		salir = false;
+		
+		do {
+		
+		
+		System.out.println("Introduce un número menor o igual que 7,5:");
+		
+		System.out.println(readEqui(7.5, Equivalencias.MENORIGUAL));
+		
+		salir = readBoolean("¿Quieres probar otra vez?");
+		
+		} while (salir);
+		
+		salir = false;
+		
+		do {
+		
+		System.out.println("Introduce un número menor que 4:");
+		
+		System.out.println(readEqui((byte)4, Equivalencias.MENOR));
+		
+		salir = readBoolean("¿Quieres probar otra vez?");
+		
+		} while (salir);
+		
+		salir = false;
+		
+		do {
+		
+		System.out.println("Introduce un número mayor que 0,5:");
+		
+		System.out.println(readEqui(0.5f, Equivalencias.MAYOR));
+		
+		salir = readBoolean("¿Quieres probar otra vez?");
+		
+		} while (salir);
+		
+		salir = false;
+		
+		
+		System.out.println("LIMITES");
+		
+		do {
+		
+		System.out.println("Introduce un número entre 0 y 10,5: (Incluidos)");
+		
+		
+		
+		System.out.println(readRange(0, 10.5, Rangos.AMBOSIN));
+		
+		salir = readBoolean("¿Quieres probar otra vez?");
+		
+		} while (salir);
+		
+		salir = false;
+		
+		do {
+		
+		System.out.println("Introduce un número entre 0 y 10,5: (Min Excluido)");
+		
+		System.out.println(readRange(0, 10.5, Rangos.MINEXMAXIN));
+		
+		salir = readBoolean("¿Quieres probar otra vez?");
+		
+		} while (salir);
+		
+		salir = false;
+		
+		do {
+		
+		System.out.println("Introduce un número entre 0 y 10,5: (Max Excluido)");
+		
+		System.out.println(readRange(0, 10.5, Rangos.MININMAXEX));
+		
+		salir = readBoolean("¿Quieres probar otra vez?");
+		
+		} while (salir);
+		
+		do {
+			
+			
+			System.out.println("Introduce un número entre 0 y 10,5: (Excluidos)");
+			
+		
+		System.out.println(readRange(0, 10.5, Rangos.AMBOSEX));
+		
+		salir = readBoolean("¿Quieres probar otra vez?");
+		
+		} while (salir);
+
 		
 		
 		
