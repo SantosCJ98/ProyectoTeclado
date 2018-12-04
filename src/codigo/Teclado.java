@@ -1,4 +1,3 @@
-
 package codigo;
 
 import java.util.InputMismatchException;
@@ -1036,12 +1035,37 @@ public class Teclado {
 		
 	}
 	
-
-	
 	public static void main (String args[]) {
 		
-		System.out.println(readBoolean("1"));
-
+	//	readInt();
+		
+	//	readDouble();
+		
+	//	readShort();
+		
+	//	readByte();
+		
+	//	readFloat();
+		
+	//	readLong();
+		
+	//	readChar();
+		
+	//	readString();
+		
+	//	readBoolean("¿True of False?", "True", "False");
+		
+	//	readBoolean("¿Si o No?");
+		
+	//	readEqui(5.8, Equivalencias.MENORIGUAL);
+		
+	//	readRange(1, 10, Rangos.AMBOSIN);
+		
+	//	readRange(20, 10, Rangos.AMBOSEX);
+		
+	//	readRange(2.4, 7.9, Rangos.MININMAXEX);
+		
+		
 		
 	}
 	
